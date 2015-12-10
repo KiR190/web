@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Open Weather Map / API Viewer</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/code.js" async></script>
+    </head>
+    <body onload="fadeInner('html'), countryShower()">
+        <div class="wrap">
+            <div class="header">
+                <a href="http://openweathermap.org/" target="_blank">Open Weather Map / API Viewer</a>
+            </div>
+            <div class="selectMode">
+              <a id="getTable" href="javascript:showTableParams()">Table</a>
+              <a id="getUnit" href="javascript:showUnitParams()">Unit</a>
+            </div>
+            <div class="menu">
+                <p>Menu</p>
+                <select id='country' onchange="cityShower(document.getElementById('country').value)">
+                  <option value="#">Select country</option>
+                </select><br><br>
+                <input id='tableGet' type="button" onclick="getTableRequest(document.getElementById('country').value)" value="GET" hidden>
+                <select id='city'>
+                  <option value="#">Select city</option>
+                </select><br><br>
+                <input id='unitGet' type="button" onclick="getRequest(document.getElementById('city').value, document.getElementById('country').value)" value="GET">
+            </div>
+            <div class="page">
+                <div id='unit' align="center">
+                  <p id='cityName'></p>
+                  <p id='cityIcon'></p>
+                  <p id='cityWeather'></p>
+                  <p id='cityTemp'></p>
+                </div>
+                <div align="center" id='divtable' hidden>
+                  <table id='table'><br>
+                    <tr id='tableCitySt'></tr>
+                    <tr id='tableCityIcon'></tr>
+                    <tr id='tableCityWeather'></tr>
+                    <tr id='tableCityTemp'></tr>
+                  </table>
+                </div>
+            </div>
+            <div class="footer">
+              <a href="https://github.com/ewhnds/webdev/tree/master/apiviewer/public_html" target="_blank">ewhnds</a>
+            </div>
+        </div>
+    </body>
+</html>
